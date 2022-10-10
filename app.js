@@ -29,6 +29,18 @@ app.post('/add', (req, res) => {
   res.redirect('/')
 })
 
+app.get('/delete/:id', (req, res) => {
+  const id = req.params.id
+  data.splice(id, 1)
+  fs.writeFileSync('db.json', JSON.stringify(data))
+  res.redirect('/')
+})
+
+app.get('/edit/:id', (req, res) => {
+  const id = req.params.id
+  res.render('edit', {item: data[id]})
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

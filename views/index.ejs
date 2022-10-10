@@ -29,7 +29,10 @@
         <td><%= item.float %></td>
         <td><%= item.date %></td>
         <td><%= item.boolean %></td>
-        <td><%= item.action %></td>
+        <td>
+          <a href="/edit/<%= index %>">Edit</a>
+          <a href="/delete/<%= index %>">Delete</a>
+        </td>
       </tr>
       <% })%>
     </tbody>
