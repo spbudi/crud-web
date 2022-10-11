@@ -7,8 +7,11 @@
   <title>Add</title>
 </head>
 <body>
-  <h1>Add Data</h1>
+  <h1>Edit Data</h1>
   <form action="" method="post">
+    <label for="id">ID</label>
+    <input type="text" name="id" id="id" value="<%= index + 1 %>" disabled>
+    <br><br>
     <label for="string">String</label>
     <input type="text" name="string" placeholder="String" value="<%= item.string %>">
     <br><br>
@@ -22,10 +25,10 @@
     <input type="date" name="date" placeholder="Date" value="<%= item.date %>">
     <br><br>
     <label for="boolean">Boolean</label>
-    <select name="boolean" id="boolean">
-      <option value="">Choose the boolean ...</option>
-      <option value="<%= item.true%>">True</option>
-      <option value="<%= item.false%>">False</option>
+    <select name="boolean" id="boolean" value="<%= item.boolean %>">
+      <!-- <option value="">Choose the boolean ...</option> -->
+      <option value="true">True</option>
+      <option value="false">False</option>
     </select>
     <br><br>
     <button type="submit">Save</button>
