@@ -11,6 +11,8 @@ app.set('views', path.join(__dirname, 'views'))
 
 app.set('view engine', 'ejs')
 
+app.use(express.static(path.join(__dirname, 'public')))
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
@@ -39,6 +41,13 @@ app.get('/delete/:id', (req, res) => {
 app.get('/edit/:id', (req, res) => {
   const id = req.params.id
   res.render('edit', {item: data[id], index: parseInt(id)})
+})
+
+app.post('/edit/:id', (req, res) => {
+  const id = req.params.id
+  data[id] = {string: req.body.string, integer: parseInt(req.body.integer), float: parseFloat(req.body.float), date: req.body.date, boolean: req.body.boolean}
+  fs.writeFileSync('db.json', JSON.stringify(data))
+  res.redirect('/')
 })
 
 // app.get('/edit/:id', (req, res) => {
